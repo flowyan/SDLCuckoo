@@ -1,0 +1,21 @@
+{
+  "name": "sdlcuckoo",
+  "version": "1.0.0",
+  "dependencies": [
+    {
+      "name": "sdl3",
+      "features": [
+        "vulkan",
+        "wayland",
+        "x11"
+      ]
+    },
+    {
+      "name": "sdl3-image",
+      "features": [
+        "png"
+      ]
+    },
+    "sdl3-ttf"
+  ]
+}
