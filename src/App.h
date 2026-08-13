@@ -4,8 +4,6 @@
 #include <SDL3/SDL_log.h>
 #include <SDL3/SDL_gpu.h>
 
-
-
 class App {
 public:
     App(int argc, char **argv);
