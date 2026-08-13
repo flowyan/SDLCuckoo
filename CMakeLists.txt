@@ -16,7 +16,7 @@ add_custom_target(resources
         COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
         "resources"
         "$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources"
-        COMMENT "Copying data"
+        COMMENT "Copying resources"
 )
 add_dependencies(${PROJECT_NAME} resources)
 
