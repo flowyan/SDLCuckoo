@@ -14,7 +14,7 @@ target_sources(${PROJECT_NAME} PRIVATE src/main.cpp)
 # copy the resources folder in src
 add_custom_target(resources
         COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
-        "resources"
+        "${CMAKE_SOURCE_DIR}/resources"
         "$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources"
         COMMENT "Copying resources"
 )
