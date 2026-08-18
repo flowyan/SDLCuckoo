@@ -8,6 +8,7 @@ add_executable(
         ${PROJECT_NAME}
         src/App.cpp
         src/App.h
+        src/utils/ErrorCheck.h
 )
 target_sources(${PROJECT_NAME} PRIVATE src/main.cpp)
 

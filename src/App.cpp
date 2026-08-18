@@ -3,6 +3,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 
+#include "utils/ErrorCheck.h"
+
 App::App(int argc, char **argv) : m_window(nullptr, &SDL_DestroyWindow), m_gpuDevice(nullptr, &SDL_DestroyGPUDevice) {
 }
 
@@ -32,16 +34,13 @@ SDL_AppResult App::Init() {
 
     std::string iconPath(SDL_GetBasePath());
     iconPath.append("resources/bird.png");
-    SDL_Surface* windowIcon = IMG_Load(iconPath.c_str());
-    if (!windowIcon) {
-        SDL_LogError(APP_LOG_CATEGORY_GENERIC, "Failed to load window icon: %s", SDL_GetError());
-        return SDL_APP_FAILURE;
-    }
-    if (!SDL_SetWindowIcon(m_window.get(), windowIcon)) {
+    const std::unique_ptr<SDL_Surface> windowIcon(IMG_Load(iconPath.c_str()));
+
+    Check(!windowIcon, "window icon");
+    if (!SDL_SetWindowIcon(m_window.get(), windowIcon.get())) {
         SDL_LogError(APP_LOG_CATEGORY_GENERIC, "Failed to set window icon: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
-    SDL_DestroySurface(windowIcon);
 
     SDL_Log("Supported GPU drivers:");
     for (int i = 0; i < SDL_GetNumGPUDrivers(); ++i) {
