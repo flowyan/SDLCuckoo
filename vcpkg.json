@@ -16,6 +16,7 @@
         "png"
       ]
     },
-    "sdl3-ttf"
+    "sdl3-ttf",
+    "qt"
   ]
 }
