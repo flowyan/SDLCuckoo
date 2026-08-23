@@ -21,7 +21,7 @@ add_custom_target(resources
 )
 add_dependencies(${PROJECT_NAME} resources)
 
-### Libraries
+### vcpkg Libraries
 find_package(SDL3 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
 
@@ -30,3 +30,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:SDL3_image::S
 
 find_package(SDL3_ttf CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3_ttf::SDL3_ttf)
+
+### local Libraries
+
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets)
